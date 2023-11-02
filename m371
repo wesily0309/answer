@@ -1,0 +1,78 @@
+a=input().split(' ')
+a=list(map(int,a))
+b=[]
+for i in range(a[0]):
+    y=input().split(' ')
+    b.append(list(map(int,y)))#讀取測資
+ans=0
+r=True
+l=True
+while 1:
+    r,t=False,False
+    h=[]
+    sh=[]
+    shs=[]
+#    print('aaaaaaaaaaa')
+#    for i in b:
+#        print(i)
+    for c in range(a[0]):
+        h=[]
+        for g in range(a[1]):
+            try:    
+                if b[c][g]!='n':
+                    h.append(b[c][g])
+#                    if c==2:
+#                        print(b[c][g],'cg')
+                try:
+                    if h[-1]==h[-2]:
+                        sh.append(h[-1])
+#                        print(h[-1],'--1',h)
+                        ans+=h[-1]
+                        r=True
+                        for c1 in range(a[0]):
+                            for g1 in range(a[1]):
+                                if b[c1][g1]==h[-1]:
+                                    b[c1][g1]='n'
+                                    
+                        h=[]
+                except:
+                    pass
+            except:
+                pass
+#    for i in b:
+#        print(i)
+    #print(h)
+
+    h1=[]
+    for p in range(a[1]):
+        h1=[]
+        for j in range(a[0]):
+            try:
+                if b[j][p]!='n':
+                    h1.append(b[j][p])
+                try:    
+                    if h1[-1]==h1[-2]:
+                        ans+=h1[-1]
+                        sh.append(h1[-1])
+                        l=True
+                        for v in range(a[1]):
+                            for v1 in range(a[0]):
+                                if b[v1][v]==h1[-1]:
+                                    b[v1][v]='n'
+                        h1=[]
+                except:
+                    pass
+            except:
+                pass
+#    print(l,r)
+#    for i in b:
+        #print(i)
+    if (not r) or (not l):
+        break
+#    print(ans)
+
+#print('---------')
+#for i in b:
+#    print(i)
+print(ans)
+
